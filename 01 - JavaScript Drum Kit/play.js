@@ -1,5 +1,7 @@
 function endTransition (e) {
-    e.target.classList.remove('playing');
+    if (e.propertyName !== 'transform') {
+        e.target.classList.remove('playing');
+    }
 }
 
 function playSound (e) {
@@ -10,7 +12,10 @@ function playSound (e) {
     key.classList.add('playing');
 
     let audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
-    if (audio != null) audio.play();
+    if (audio != null) {
+    audio.currentTime = 0;
+    audio.play();
+    }
 }
 
 const keys = document.querySelectorAll('.key');
