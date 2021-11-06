@@ -37,28 +37,77 @@
     
     // Array.prototype.filter()
     // 1. Filter the list of inventors for those who were born in the 1500's
+    let result1 = inventors.filter(inventor => (inventor.year >= 1500 && inventor.year < 1600));
 
+    console.log("EXERCISE 1:");
+    console.log(result1);
     // Array.prototype.map()
     // 2. Give us an array of the inventors first and last names
+    let result2 = inventors.map(inventor => `${inventor.first} ${inventor.last}`);
+
+    console.log("EXERCISE 2:");
+    console.log(result2);
 
     // Array.prototype.sort()
     // 3. Sort the inventors by birthdate, oldest to youngest
+    let result3 = inventors.sort((a, b) => a.year - b.year);
+
+    console.log("EXERCISE 3:");
+    console.log(result3);
 
     // Array.prototype.reduce()
     // 4. How many years did all the inventors live all together?
+    let result4 = inventors.reduce((prev, curr) => prev + (curr.passed - curr.year), 0);
+
+    console.log("EXERCISE 4:");
+    console.log(result4);
 
     // 5. Sort the inventors by years lived
+    let result5 = inventors.sort((a, b) => (b.passed-b.year)-(a.passed-a.year));
+
+    console.log("EXERCISE 5:");
+    console.log(result5);
 
     // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
     // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
-
+    /*
+    let category = document.querySelector(".mw-category");
+    let a = Array.from(category.querySelectorAll("a"));
+    result6 = a.map(element => element.text);
+    console.log("EXERCISE 6:");
+    console.log(result6);
+    */
 
     // 7. sort Exercise
     // Sort the people alphabetically by last name
+    result7 = inventors.sort((a, b) => {
+      if (a.last > b.last) {
+        return 1;
+      } else if (a.last < b.last) {
+        return -1;
+      } else {
+        return 0;
+      }
+    });
+
+    console.log("EXERCISE 7:");
+    console.log(result7);
 
     // 8. Reduce Exercise
     // Sum up the instances of each of these
     const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck' ];
+
+    result8 = data.reduce((prev, curr) => {
+      if (curr in prev) {
+        prev[curr] += 1;
+      } else {
+        prev[curr] = 0;
+      }
+      return prev;
+    }, {});
+
+    console.log("EXERCISE 8:");
+    console.log(result8);
 
   </script>
 </body>
